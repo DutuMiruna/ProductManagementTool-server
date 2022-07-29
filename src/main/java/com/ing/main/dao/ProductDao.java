@@ -142,4 +142,17 @@ public class ProductDao {
         }
         return false;
     }
+    
+    public boolean deleteProductById(int id) {
+        try {
+            TypedQuery<Product> deleteProductQuery = em.createNamedQuery("Product.findById", Product.class);
+            deleteProductQuery.setParameter("id", id);
+            Product ctxProdus = (Product) deleteProductQuery.getSingleResult();
+            em.remove(ctxProdus);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
 }

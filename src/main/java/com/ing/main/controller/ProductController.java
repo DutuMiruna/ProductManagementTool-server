@@ -76,4 +76,9 @@ public class ProductController {
         return productService.deleteProduct(name, price);
     }
 
+    @DeleteMapping("/deleteProductById/{id}")
+    public GenericMessage deleteProductById(@PathVariable(value = "id") int id) {
+        return productService.deleteProductById(id);
+    }
+
 }

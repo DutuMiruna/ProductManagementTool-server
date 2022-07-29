@@ -30,6 +30,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers(HttpMethod.POST, "/addProduct").hasRole("admin")
                 .antMatchers(HttpMethod.DELETE, "/deleteProduct").hasRole("admin")
+                .antMatchers(HttpMethod.DELETE, "/deleteProductById").hasRole("admin")
                 .antMatchers(HttpMethod.POST, "/changePrice").hasRole("admin")
                 .antMatchers(HttpMethod.POST, "/changeName").hasRole("admin")
                 .antMatchers(HttpMethod.POST, "/changeNamePrice").hasRole("admin")

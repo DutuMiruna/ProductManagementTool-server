@@ -20,14 +20,19 @@ public class ProductService {
 
     @Transactional
     public GenericMessage addProduct(String name, int price) {
-        Product p = new Product();
-        p.setName(name);
-        p.setPrice(price);
-        boolean result = productDao.addProduct(p);
-        if (result == true) {
-            return new GenericMessage("Product added succesfully.");
-        } else {
-            return new GenericMessage("Could not add product with name = " + name + " and price = " + price);
+        if (productDao.getProductsByNamePrice(name, price).isEmpty()) {
+            Product p = new Product();
+            p.setName(name);
+            p.setPrice(price);
+
+            boolean result = productDao.addProduct(p);
+            if (result == true) {
+                return new GenericMessage("Product added succesfully.");
+            } else {
+                return new GenericMessage("Could not add product with name = " + name + " and price = " + price);
+            }
+        }else{
+            return new GenericMessage("The product with name = " + name + " and price = " + price+" already exists in DB."); 
         }
     }
 
@@ -127,6 +132,16 @@ public class ProductService {
             return new GenericMessage("Product deleted succesfully.");
         } else {
             return new GenericMessage("Could not delete product with name = " + name + " and price = " + price);
+        }
+    }
+
+    @Transactional
+    public GenericMessage deleteProductById(int id) {
+        boolean result = productDao.deleteProductById(id);
+        if (result == true) {
+            return new GenericMessage("Product deleted succesfully.");
+        } else {
+            return new GenericMessage("Could not delete product with id = " + id + ".");
         }
     }
 }
