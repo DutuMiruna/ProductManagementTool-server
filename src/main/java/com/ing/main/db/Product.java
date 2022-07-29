@@ -28,7 +28,8 @@ import javax.validation.constraints.Size;
     @NamedQuery(name = "Product.findAll", query = "SELECT p FROM Product p"),
     @NamedQuery(name = "Product.findById", query = "SELECT p FROM Product p WHERE p.id = :id"),
     @NamedQuery(name = "Product.findByName", query = "SELECT p FROM Product p WHERE p.name = :name"),
-    @NamedQuery(name = "Product.findByPrice", query = "SELECT p FROM Product p WHERE p.price = :price")})
+    @NamedQuery(name = "Product.findByPrice", query = "SELECT p FROM Product p WHERE p.price = :price"),
+    @NamedQuery(name = "Product.findByNamePrice", query = "SELECT p FROM Product p WHERE p.name = :name AND p.price = :price")})
 public class Product implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -108,5 +109,5 @@ public class Product implements Serializable {
     public String toString() {
         return "com.ing.main.db.Product[ id=" + id + " ]";
     }
-    
+
 }

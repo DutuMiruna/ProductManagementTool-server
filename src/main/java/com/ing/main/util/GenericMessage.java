@@ -11,27 +11,27 @@ package com.ing.main.util;
  */
 public class GenericMessage {
 
-    private String errMsg;
+    private String message;
 
     public GenericMessage() {
     }
 
-    public GenericMessage(String errMsg) {
+    public GenericMessage(String message) {
 
-        this.errMsg = errMsg;
+        this.message = message;
     }
 
-    public String getErrMsg() {
-        return errMsg;
+    public String getMessage() {
+        return message;
     }
 
-    public void setErrMsg(String errMsg) {
-        this.errMsg = errMsg;
+    public void setMessage(String message) {
+        this.message = message;
     }
 
     @Override
     public String toString() {
-        return "GenericMessage{" + "errMsg=" + errMsg + '}';
+        return "GenericMessage{" + "message=" + message + '}';
     }
 
 }
